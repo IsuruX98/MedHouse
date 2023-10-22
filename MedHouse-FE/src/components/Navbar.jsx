@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
 import navUserIcon from "../assets/nav_user_icon.svg";
 
 const Navbar = () => {
+  const location = useLocation();
+
+  if (location.pathname === "/" || location.pathname === "/adminpage") {
+    return null; // Hide Navbar for paths "/" and "/adminpage"
+  }
+
   return (
     <header className="nav-bar-container">
       <nav className="nav-bar">
-        <Link className="logo" to="/">
+        <Link className="logo" to="/home">
           <span style={{ color: "#FF4500" }}>MED</span>
           <span style={{ color: "#00FFFF" }}>HOUSE</span>
         </Link>

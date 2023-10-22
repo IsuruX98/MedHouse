@@ -56,7 +56,7 @@ function Clearance() {
       <div className="header">
         <Link to="/services">Back</Link>
         <h2>Clearance</h2>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="studentName">Student name</label>

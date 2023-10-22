@@ -46,7 +46,7 @@ function Mentoring() {
       <div className="header">
         <Link to="/services">Back</Link>
         <h2>Mentoring Program - Let's Talk</h2>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </div>
 
       <form onSubmit={handleSubmit}>

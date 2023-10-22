@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
+  const location = useLocation();
+
+  if (location.pathname === "/" || location.pathname === "/adminpage") {
+    return null; // Hide Navbar for paths "/" and "/adminpage"
+  }
+
   return (
     <>
       <div className="Footer">

@@ -53,7 +53,7 @@ function Medical() {
       <div className="header">
         <Link to="/services">Back</Link>
         <h2>Medical service</h2>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </div>
       <div className="time_table">
         Display the available doctors time table as a table. Keep empty while

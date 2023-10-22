@@ -46,7 +46,7 @@ function Leave() {
       <div className="header">
         <Link to="/services">Back</Link>
         <h2>Leave Request</h2>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </div>
       <p>You must be available in the hostel area 9pm - 5am</p>
       <p>

@@ -64,7 +64,7 @@ function Cleaning() {
       <div className="header">
         <Link to="/services">Back</Link>
         <h2>Cleaning</h2>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </div>
       <div className="guidelines_cleaning">
         <h3>Guidelines</h3>

@@ -6,13 +6,8 @@ import "./home.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Home({loginState}) {
-  // const navigate = useNavigate();
-  // useEffect(()=>{
-  //   if(!loginState){
-  //     navigate("/login")
-  //   }
-  // })
+function Home() {
+
   return (
     <>
       <Welcome />

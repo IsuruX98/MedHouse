@@ -23,8 +23,7 @@ function Signin({ setSignin, setLoginState }) {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "success") {
-          setLoginState(true);
-          navigate("/");
+          navigate("/home");
           Swal.fire({
             icon: "success",
             title: "Login Successful!",
@@ -71,7 +70,7 @@ function Signin({ setSignin, setLoginState }) {
             type="password"
             name="sign-in-password"
             id="sign-in-password"
-            placeholder=" ••••••••••"
+            placeholder="password..."
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required

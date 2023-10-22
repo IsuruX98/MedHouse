@@ -31,7 +31,7 @@ function Signup({ setSignin }) {
           // Show a success alert and then navigate to the home page
           Swal.fire("Signup Successful!", "", "success").then(() => {
             // Navigate to the home page
-            navigate("/");
+            navigate("/home");
           });
         } else {
           // Show an error alert
@@ -102,7 +102,7 @@ function Signup({ setSignin }) {
             type="password"
             name="sign-up-password"
             id="sign-up-password"
-            placeholder=" ••••••••••"
+            placeholder="password..."
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required
@@ -114,7 +114,7 @@ function Signup({ setSignin }) {
             type="password"
             name="sign-up-con-password"
             id="sign-up-con-password"
-            placeholder=" ••••••••••"
+            placeholder="confirm password..."
             onChange={(e) => setConPassword(e.target.value)}
             value={conPassword}
             required

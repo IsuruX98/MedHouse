@@ -40,9 +40,9 @@ function RoomInquire() {
   return (
     <div className="mentoring">
       <div className="header">
-        <Link to="/">Back</Link>
+        <Link to="/home">Back</Link>
         <h2>Room Inquire</h2>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="student_detail">
