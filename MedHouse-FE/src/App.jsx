@@ -23,6 +23,7 @@ import { useState } from "react";
 // temp files
 import RoomInquire from "./Pages/Accommodations/DetailPage/RoomInquire";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
+import Login from "./Pages/Home/Login";
 
 function App() {
   const [loginState, setLoginState] = useState(false);
