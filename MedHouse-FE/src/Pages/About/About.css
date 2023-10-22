@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+:root {
+  --background-color: #ecf5ff;
+  --Headline-color: #00487c;
+  --button-color: #0074b8;
+  --header-font-size: 40px;
+  --text-font-size: 20px;
+}
+
+/* Adding a page limit to each section */
+.sections {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Inter", sans-serif;
+}
+
+/* The styling for the Mission section */
+
+.mission {
+  padding-top: 12rem;
+  width: 90%;
+  margin: auto;
+}
+.mission h1 {
+  text-align: center;
+  font-size: 80px;
+  font-weight: bold;
+  color: var(--Headline-color);
+}
+
+.mission-description {
+  width: 70%;
+  height: 70%;
+  margin: auto;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mission-description-right {
+  height: 30rem;
+  box-shadow: 10px 10px #add8e6;
+  border-radius: 5px;
+}
+
+.mission-description-right img {
+  height: 100%;
+  border-radius: 10px;
+  text-shadow: #00487c;
+}
+
+.mission-description-left {
+  width: 30vw;
+  padding-top: 5rem;
+}
+
+.mission-description-left h3 {
+  padding-bottom: 2rem;
+}
+
+.mission-description-left p {
+  font-size: 20px;
+}
+
+.mission-description-left .catchPhrase {
+  font-weight: bolder;
+  padding-top: 5rem;
+}
+
+.mission-description-title {
+  color: var(--Headline-color);
+  font-size: var(--header-font-size);
+}
+
+/* Styling for the Stuff section */
+.stuff {
+  width: 80vw;
+  margin: auto;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.stuff_title {
+  font-size: var(--header-font-size);
+  color: var(--Headline-color);
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.slider-container {
+  border: 1px var(--button-color) solid;
+  border-radius: 20px;
+  width: 80%;
+  height: 65vh;
+  padding: 2rem;
+}
+
+.stuff_Swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  font-size: 18px;
+  text-align: center;
+  max-width: 90%;
+}
+
+.card {
+  /* making it a display flex */
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.imgPart img{
+  max-height: 250px;
+}
+
+.card .text {
+  padding-top: 2rem;
+  padding-left: 3em;
+  text-align: left;
+}
+
+.card .text .titleOftheMember {
+  position: inline;
+  padding-bottom: 1em;
+}
+
+.card .text .titleOftheMember h4 {
+  font-size: 25px;
+  color: var(--Headline-color);
+}
+
+.card .text .titleOftheMember span {
+  font-size: 15px;
+  color: #333;
+}
+
+.rules h3 {
+  font-size: var(--header-font-size);
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  color: var(--Headline-color);
+}
+
+.rules_text {
+  width: 65vw;
+  margin: auto;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.rules_text ul {
+    padding-left: 50px;
+}
+
+.rules_text p {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.rules_text p:first-child{
+  padding-top: 0.5rem;
+}
+
+.map {
+  width: 70vw;
+  margin: auto;
+  margin-top: 6rem;
+  margin-bottom: 4rem;
+  display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center;
+}
+
+.map img {
+  width: 60vw;
+  margin: auto;
+}
+
+.map h3 {
+  font-size: 50px;
+  padding-top: 2rem;
+  color: var(--Headline-color);
+}

@@ -1,0 +1,52 @@
+:root {
+    --fontSize-subheader: 25px;
+    --fontSize-mainHeader: 52px;
+    --fontSize-normalText: 15px;
+}
+
+.Footer-logo {
+  margin-left: 2rem;
+  text-decoration: none;
+  font-size: var(--fontSize-mainHeader);
+  font-weight: 400;
+}
+
+.Footer {
+    width: 90vw;
+    margin: auto;
+    margin-bottom: 1.5em;
+    padding-top: 15px;
+    border-top: 2px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Footer-links {
+    text-align: center;
+
+}
+
+.Footer-links h5 {
+    font-size: var(--fontSize-subheader);
+    margin-bottom: 0.4em;
+}
+
+.Footer-links ul {
+    list-style-type: none;
+}
+
+.Footer-links ul li {
+    margin-bottom: 0.2rem;
+}
+
+.Footer-links ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: var(--fontSize-normalText);
+}
+
+.Footer-contact {
+    text-align: right;
+    margin-right: 2rem;
+}

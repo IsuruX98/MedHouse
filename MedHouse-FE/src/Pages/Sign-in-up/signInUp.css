@@ -1,0 +1,88 @@
+.sign-in-up-page-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.sign-in-up-page-container .sign-main-container{
+    background-color: white;
+    width: 400px;
+    /* height: 200px; */
+    margin: 10px;
+    box-shadow: 0px 7px 15px -3px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 15px 20px 15px;
+    border-radius: 20px;
+    color: #001F3F;
+    
+}
+
+.sign-in-up-page-container .sign-main-container h1{
+    margin: 30px 0 20px 0;
+    color: #001F3F;
+}
+.sign-in-up-page-container .sign-main-container form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sign-in-up-page-container .sign-main-container div{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+.sign-in-up-page-container .sign-main-container div select{
+    width:249px;
+}
+
+.sign-in-up-page-container .sign-main-container div input, select{
+    border: none;
+    height: 40px;
+    /* object-fit:scale-down; */
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 250px;
+    padding-left: 5px;
+    background-color: #CDE4F8;
+}
+
+.sign-in-up-page-container .sign-main-container div label{
+    margin:5px;
+}
+.sign-in-up-page-container .sign-main-container button{
+    
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 20px 0;
+    background-color: #0074B8;
+    color: #BFEFFF;
+    font-size: 1rem;
+}
+.sign-in-up-page-container .sign-main-container button:hover{
+    background-color: #00588b;
+}
+
+.sign-in-up-page-container .sign-main-container p{
+    margin-bottom: 10px;
+    color: rgb(55, 55, 55);
+}
+
+.sign-in-up-page-container .sign-main-container p span{
+    
+    color: #004770;
+    font-weight: 500;
+    cursor: pointer;
+}
+.sign-in-up-page-container .sign-main-container p span:hover{
+    color: #001F3F;
+}
+
+
+
+
