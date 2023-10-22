@@ -1,0 +1,52 @@
+.admin-dashboard {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.side-nav {
+  width: 250px;
+  background-color: #0075b8d6;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+}
+
+.side-nav .nav-item-title {
+  margin-bottom: 30px;
+  font-weight: 900;
+  font-size: 24px;
+  text-transform: uppercase;
+  padding: 20px;
+}
+
+.side-nav .nav-item {
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+  padding: 20px;
+}
+
+.side-nav .nav-item:hover {
+  background-color: #005b7f; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
+.side-nav .nav-item.active {
+  font-weight: bold;
+}
+
+.table-container {
+  margin-left: 250px;
+  padding: 40px;
+  width: calc(100% - 250px);
+}
+
+.table {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Add specific styles for each table component if needed */

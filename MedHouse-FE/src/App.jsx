@@ -21,8 +21,8 @@ import Leave from "./Pages/ServicesPage/Forms/Leave";
 import { useState } from "react";
 
 // temp files
-import Admin from "./Pages/Users/Admin";
 import RoomInquire from "./Pages/Accommodations/DetailPage/RoomInquire";
+import AdminDashboard from "./Pages/Admin/AdminDashboard";
 
 function App() {
   const [loginState, setLoginState] = useState(false);
@@ -51,7 +51,7 @@ function App() {
         <Route path="/services/Mentoring" element={<Mentoring />} />
         <Route path="/services/Leave" element={<Leave />} />
         {/* temparary paths to admin board */}
-        <Route path="/adminpage" element={<Admin />} />
+        <Route path="/adminpage" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );
