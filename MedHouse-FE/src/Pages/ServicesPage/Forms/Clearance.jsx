@@ -1,8 +1,56 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 import "./forms.css";
 
-
 function Clearance() {
+  const [formData, setFormData] = useState({
+    studentName: "",
+    studentID: "",
+    studentEmail: "",
+    roomID: "",
+    registrationYear: "",
+    duration: "",
+    beds: "",
+    towelRack: false,
+    chair: false,
+    table: false,
+    cardboard: false,
+    extraKey: false, // Changed from 'key' to 'extraKey'
+    handOverDate: "",
+    otherNotes: "",
+    certified: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/api/clearance", formData)
+      .then((response) => {
+        // Handle success
+        console.log(response.data); // Log the response for debugging
+        Swal.fire(
+          "Success!",
+          "Clearance information submitted successfully!",
+          "success"
+        );
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Error:", error);
+        Swal.fire("Error!", "Failed to submit clearance information!", "error");
+      });
+  };
+
   return (
     <div className="clearance">
       <div className="header">
@@ -10,70 +58,149 @@ function Clearance() {
         <h2>Clearance</h2>
         <Link to="/">Home</Link>
       </div>
-      <form action="">
-        <label htmlFor="student_name">Student name</label>
-        <input type="text" />
-        <label htmlFor="student_id">Student ID</label>
-        <input type="number" name="student_id" id="student_id" />
-        <label htmlFor="student_mail">Student Email</label>
-        <input type="email" name="student_mail" id="student_mail" />
-        <label htmlFor="room_id">Room ID</label>
-        <input type="number" name="room_id" id="room_id" />
-        <label htmlFor="registration_year">Registration Year</label>
-        <input type="number" name="registration_year" id="registration_year" />
-        <label htmlFor="duration">Duration you are going to use this room</label>
-        <input type="text" />
-        
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="studentName">Student name</label>
+        <input
+          type="text"
+          name="studentName"
+          id="studentName"
+          value={formData.studentName}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="studentID">Student ID</label>
+        <input
+          type="number"
+          name="studentID"
+          id="studentID"
+          value={formData.studentID}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="studentEmail">Student Email</label>
+        <input
+          type="email"
+          name="studentEmail"
+          id="studentEmail"
+          value={formData.studentEmail}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="roomID">Room ID</label>
+        <input
+          type="number"
+          name="roomID"
+          id="roomID"
+          value={formData.roomID}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="registrationYear">Registration Year</label>
+        <input
+          type="number"
+          name="registrationYear"
+          id="registrationYear"
+          value={formData.registrationYear}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="duration">
+          Duration you are going to use this room
+        </label>
+        <input
+          type="text"
+          name="duration"
+          id="duration"
+          value={formData.duration}
+          onChange={handleChange}
+        />
+
         <div className="checkbox-container">
-          <label htmlFor="availability_item">Please mark abailability of item</label>
-          <label htmlFor="items_beds">Beds </label>
-          <ul>
-            <li>
-              <div className="bed1">
-                <label htmlFor="items_beds_1">1</label>
-                <input type="radio" name="item" id="items_beds_1" />
-              </div>
-            </li>
-           <li>
-            <div className="bed2">
-              <label htmlFor="items_beds_2">2</label>
-              <input type="radio" name="item" id="items_beds_2" />
-            </div>
-          </li>
-            <li>
-                <div className="bed4">
-                <label htmlFor="items_beds_4">4</label>
-                <input type="radio" name="item" id="items_beds_4" />
-              </div>
-            </li>
-          </ul>
-          <div className="towel-rack">          
-          <label htmlFor="towel_rack">Towel rack - 2</label>
-          <input type="checkbox" name="towel_rack" id="towel_rack" />
-          </div>
-          <div className="chair-con">
-          <label htmlFor="chair">Chair 2</label>
-          <input type="checkbox" name="chair" id="chair" />
-          </div>
-          <div className="tabel-con">
-          <label htmlFor="tabel">Tabel 2</label>
-          <input type="checkbox" name="table" id="table" />
-          </div>
-          <div className="cardboard-con">
-          <label htmlFor="cardboard">Cardboard Wood 1</label>
-          <input type="checkbox" name="cardboard" id="cardboard" />
-          </div>
-          <div className="key-con">
-          <label htmlFor="key">Extra Key 1</label>
-          <input type="checkbox" name="key" id="key" /></div>
-         
+          <label htmlFor="beds">Number of Beds</label>
+          <input
+            type="number"
+            name="beds"
+            id="beds"
+            value={formData.beds}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="towelRack">Towel Rack</label>
+          <input
+            type="checkbox"
+            name="towelRack"
+            id="towelRack"
+            checked={formData.towelRack}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="chair">Chair</label>
+          <input
+            type="checkbox"
+            name="chair"
+            id="chair"
+            checked={formData.chair}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="table">Table</label>
+          <input
+            type="checkbox"
+            name="table"
+            id="table"
+            checked={formData.table}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="cardboard">Cardboard Wood</label>
+          <input
+            type="checkbox"
+            name="cardboard"
+            id="cardboard"
+            checked={formData.cardboard}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="key">Extra Key</label>
+          <input
+            type="checkbox"
+            name="key"
+            id="key"
+            checked={formData.key}
+            onChange={handleChange}
+          />
         </div>
-        <label htmlFor="HandOver">Hand Over Date</label>
-        <input type="date" name="HandOver" id="HandOver" />
-        <label htmlFor="Other">Other Notes</label>
-        <textarea name="Other" id="Other" cols="30" rows="10"></textarea>
-        <label htmlFor="honor">I honor certified this clearance information is correct.</label>
-        <input type="text" />
+
+        <label htmlFor="handOverDate">Hand Over Date</label>
+        <input
+          type="date"
+          name="handOverDate"
+          id="handOverDate"
+          value={formData.handOverDate}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="otherNotes">Other Notes</label>
+        <textarea
+          name="otherNotes"
+          id="otherNotes"
+          cols="30"
+          rows="10"
+          value={formData.otherNotes}
+          onChange={handleChange}
+        ></textarea>
+
+        <label htmlFor="honorCertified">
+          I honor certified this clearance information is correct.
+        </label>
+        <input
+          type="checkbox"
+          name="certified"
+          id="certified"
+          checked={formData.certified}
+          onChange={handleChange}
+        />
+
         <input type="submit" value="done" />
       </form>
     </div>
