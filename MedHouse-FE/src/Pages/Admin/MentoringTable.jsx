@@ -17,6 +17,24 @@ function MentoringTable() {
       });
   }, []);
 
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      // Update the status of the mentoring request in the backend
+      await axios.patch(`http://localhost:5000/api/mentoring/${id}/status`, {
+        status: newStatus,
+      });
+
+      // Update the local state with the updated status
+      setMentoringRequests((prevRequests) =>
+        prevRequests.map((request) =>
+          request._id === id ? { ...request, status: newStatus } : request
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status: ", error);
+    }
+  };
+
   return (
     <div className="table">
       <h1>Mentoring Requests Table</h1>
@@ -29,6 +47,8 @@ function MentoringTable() {
             <th>Request Time</th>
             <th>Mentoring Type</th>
             <th>Reason</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +60,29 @@ function MentoringTable() {
               <td>{request.requestTime}</td>
               <td>{request.mentoringType}</td>
               <td>{request.reason}</td>
+              <td className="stats">{request.status}</td>
+              <td>
+                {request.status === "pending" && (
+                  <>
+                    <button
+                      className="accept"
+                      onClick={() =>
+                        handleStatusChange(request._id, "accepted")
+                      }
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="reject"
+                      onClick={() =>
+                        handleStatusChange(request._id, "rejected")
+                      }
+                    >
+                      Reject
+                    </button>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

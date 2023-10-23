@@ -47,6 +47,11 @@ const cleaningSchema = new mongoose.Schema(
         default: false,
       },
     },
+    status: {
+      type: String,
+      enum: ["pending", "accepted", "rejected"],
+      default: "pending", // Set default status to "pending"
+    },
   },
   {
     timestamps: true,

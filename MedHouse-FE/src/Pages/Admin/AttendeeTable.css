@@ -34,3 +34,31 @@ tr:nth-child(even) {
 tbody tr:hover {
   background-color: #f0f0f0;
 }
+button.accept {
+  background-color: #0075b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.reject {
+  background-color: #ff4646; /* Red color for rejection */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005a80;
+}
+.stats {
+  font-weight: bold;
+  color: #0075b8;
+}

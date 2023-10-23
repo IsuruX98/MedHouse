@@ -14,6 +14,8 @@ import {
 import "./StatisticsTab.css";
 
 function StatisticsTab() {
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
   const [data, setData] = useState({
     attendees: 0,
     roomInquiries: 0,
@@ -151,9 +153,25 @@ function StatisticsTab() {
     },
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div className="statistics-tab">
-      <h2>Statistics</h2>
+      <div>
+        <div>
+          <h2>Statistics</h2>
+        </div>
+        <div className="live-date-time">{currentDateTime.toLocaleString()}</div>
+      </div>
+
       <div className="card-container">
         <div className="card card-blue">
           <div className="card-icon blue">

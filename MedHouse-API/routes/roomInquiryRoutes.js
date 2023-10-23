@@ -17,4 +17,7 @@ router.put("/:id", roomInquiryController.updateRoomInquiry);
 // Delete a room inquiry by ID
 router.delete("/:id", roomInquiryController.deleteRoomInquiry);
 
+// Update the status of a room inquiry by ID
+router.patch("/:id/status", roomInquiryController.updateRoomInquiry);
+
 module.exports = router;

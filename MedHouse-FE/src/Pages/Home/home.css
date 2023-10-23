@@ -224,7 +224,7 @@ body {
 .facilities .cards .card {
   display: flex;
   flex-direction: column;
-  border:#0074b8 solid 1px;
+  border: #0074b8 solid 1px;
   padding: 10px 30px;
   border-radius: 10px;
 }
@@ -297,7 +297,7 @@ body {
   grid-area: 3 / 1 / 4 / 3;
 }
 
-input[type=submit] {
+input[type="submit"] {
   margin: 5px 15vw;
   margin-top: 50px;
   cursor: pointer;

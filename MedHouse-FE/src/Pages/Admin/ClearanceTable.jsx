@@ -17,6 +17,24 @@ function ClearanceTable() {
       });
   }, []);
 
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      // Update the status of the clearance request in the backend
+      await axios.patch(`http://localhost:5000/api/clearance/${id}/status`, {
+        status: newStatus,
+      });
+
+      // Update the local state with the updated status
+      setClearanceRequests((prevRequests) =>
+        prevRequests.map((request) =>
+          request._id === id ? { ...request, status: newStatus } : request
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status: ", error);
+    }
+  };
+
   return (
     <div className="table">
       <h1>Clearance Requests Table</h1>
@@ -28,6 +46,8 @@ function ClearanceTable() {
             <th>Student Year</th>
             <th>Duration</th>
             <th>Hand Over Date</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +58,29 @@ function ClearanceTable() {
               <td>{new Date(request.handOverDate).getFullYear()}</td>
               <td>{request.duration}</td>
               <td>{new Date(request.handOverDate).toLocaleDateString()}</td>
+              <td className="stats">{request.status}</td>
+              <td>
+                {request.status === "pending" && (
+                  <>
+                    <button
+                      className="accept"
+                      onClick={() =>
+                        handleStatusChange(request._id, "accepted")
+                      }
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="reject"
+                      onClick={() =>
+                        handleStatusChange(request._id, "rejected")
+                      }
+                    >
+                      Reject
+                    </button>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

@@ -17,6 +17,24 @@ function CleaningTable() {
       });
   }, []);
 
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      // Update the status of the cleaning request in the backend
+      await axios.patch(`http://localhost:5000/api/cleaning/${id}/status`, {
+        status: newStatus,
+      });
+
+      // Update the local state with the updated status
+      setCleaningRequests((prevRequests) =>
+        prevRequests.map((request) =>
+          request._id === id ? { ...request, status: newStatus } : request
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status: ", error);
+    }
+  };
+
   return (
     <div className="table">
       <h1>Cleaning Requests Table</h1>
@@ -28,6 +46,8 @@ function CleaningTable() {
             <th>Cleaning Level</th>
             <th>Request Date</th>
             <th>Mention</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +58,29 @@ function CleaningTable() {
               <td>{request.cleaningLevel}</td>
               <td>{new Date(request.requestDate).toLocaleString()}</td>
               <td>{request.mention}</td>
+              <td className="stats">{request.status}</td>
+              <td>
+                {request.status === "pending" && (
+                  <>
+                    <button
+                      className="accept"
+                      onClick={() =>
+                        handleStatusChange(request._id, "accepted")
+                      }
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="reject"
+                      onClick={() =>
+                        handleStatusChange(request._id, "rejected")
+                      }
+                    >
+                      Reject
+                    </button>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

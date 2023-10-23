@@ -17,6 +17,24 @@ function RoomInquiriesTable() {
       });
   }, []);
 
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      // Update the status of the inquiry in the backend
+      await axios.patch(`http://localhost:5000/api/inquiries/${id}/status`, {
+        status: newStatus,
+      });
+
+      // Update the local state with the updated status
+      setInquiries((prevInquiries) =>
+        prevInquiries.map((inquiry) =>
+          inquiry._id === id ? { ...inquiry, status: newStatus } : inquiry
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status: ", error);
+    }
+  };
+
   return (
     <div className="table">
       <h1>Room Inquiries Table</h1>
@@ -28,6 +46,8 @@ function RoomInquiriesTable() {
             <th>Inquiry Type</th>
             <th>Request Date</th>
             <th>Contact Number</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +58,29 @@ function RoomInquiriesTable() {
               <td>{inquiry.inquireType}</td>
               <td>{new Date(inquiry.createdAt).toLocaleDateString()}</td>
               <td>{inquiry.contactNumber}</td>
+              <td className="stats">{inquiry.status}</td>
+              <td>
+                {inquiry.status === "pending" && (
+                  <>
+                    <button
+                      className="accept"
+                      onClick={() =>
+                        handleStatusChange(inquiry._id, "accepted")
+                      }
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="reject"
+                      onClick={() =>
+                        handleStatusChange(inquiry._id, "rejected")
+                      }
+                    >
+                      Reject
+                    </button>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

@@ -1,37 +1,42 @@
 const mongoose = require("mongoose");
 
 const mentoringSchema = new mongoose.Schema(
-    {
-        studentID: {
-            type: Number,
-            required: true,
-        },
-        academicYear: {
-            type: Number,
-            required: true,
-        },
-        roomID: {
-            type: Number,
-            required: true,
-        },
-        requestTime: {
-            type: Number,
-            required: true,
-        },
-        mentoringType: {
-            type: String,
-            enum: ["student", "lecture", "counselling"],
-            required: true,
-        },
-        reason: {
-            type: String,
-            enum: ["academic", "exam", "personal", "health", "other"],
-            required: true,
-        },
+  {
+    studentID: {
+      type: Number,
+      required: true,
     },
-    {
-        timestamps: true,
-    }
+    academicYear: {
+      type: Number,
+      required: true,
+    },
+    roomID: {
+      type: Number,
+      required: true,
+    },
+    requestTime: {
+      type: Number,
+      required: true,
+    },
+    mentoringType: {
+      type: String,
+      enum: ["student", "lecture", "counselling"],
+      required: true,
+    },
+    reason: {
+      type: String,
+      enum: ["academic", "exam", "personal", "health", "other"],
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: ["pending", "accepted", "rejected"],
+      default: "pending", // Set default status to "pending"
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
 module.exports = mongoose.model("MentoringRequest", mentoringSchema);

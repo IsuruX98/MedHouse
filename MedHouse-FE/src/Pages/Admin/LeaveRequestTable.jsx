@@ -17,6 +17,24 @@ function LeaveRequestTable() {
       });
   }, []);
 
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      // Update the status of the medical service request in the backend
+      await axios.patch(`http://localhost:5000/api/leave/${id}/status`, {
+        status: newStatus,
+      });
+
+      // Update the local state with the updated status
+      setLeaveRequests((prevRequests) =>
+        prevRequests.map((request) =>
+          request._id === id ? { ...request, status: newStatus } : request
+        )
+      );
+    } catch (error) {
+      console.error("Error updating status: ", error);
+    }
+  };
+
   return (
     <div className="table">
       <h1>Leave Requests Table</h1>
@@ -30,6 +48,8 @@ function LeaveRequestTable() {
             <th>In Date</th>
             <th>Out Date</th>
             <th>Contact Number</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +62,29 @@ function LeaveRequestTable() {
               <td>{new Date(request.inDate).toLocaleDateString()}</td>
               <td>{new Date(request.outDate).toLocaleDateString()}</td>
               <td>{request.contactNo}</td>
+              <td className="stats">{request.status}</td>
+              <td>
+                {request.status === "Pending" && (
+                  <>
+                    <button
+                      className="accept"
+                      onClick={() =>
+                        handleStatusChange(request._id, "accepted")
+                      }
+                    >
+                      Accept
+                    </button>
+                    <button
+                      className="reject"
+                      onClick={() =>
+                        handleStatusChange(request._id, "rejected")
+                      }
+                    >
+                      Reject
+                    </button>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
