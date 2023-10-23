@@ -28,3 +28,13 @@ exports.signin = async (req, res) => {
     res.status(500).json({ status: "error" });
   }
 };
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json({ status: "success", users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: "error" });
+  }
+};

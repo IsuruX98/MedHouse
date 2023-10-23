@@ -7,9 +7,10 @@ import MedicalServiceTable from "./MedicalServiceTable";
 import ClearanceTable from "./ClearanceTable";
 import MentoringTable from "./MentoringTable";
 import LeaveRequestTable from "./LeaveRequestTable";
+import StatisticsTab from "./StatisticsTab";
 
 function AdminDashboard() {
-  const [selectedTable, setSelectedTable] = useState("attendee");
+  const [selectedTable, setSelectedTable] = useState("statistics");
 
   const handleNavItemClick = (tableName) => {
     setSelectedTable(tableName);
@@ -19,6 +20,12 @@ function AdminDashboard() {
     <div className="admin-dashboard">
       <div className="side-nav">
         <div className="nav-item-title">ADMIN DASHBOARD</div>
+        <div
+          className="nav-item"
+          onClick={() => handleNavItemClick("statistics")}
+        >
+          Statistics
+        </div>
         <div
           className="nav-item"
           onClick={() => handleNavItemClick("attendee")}
@@ -63,6 +70,7 @@ function AdminDashboard() {
         </div>
       </div>
       <div className="table-container">
+        {selectedTable === "statistics" && <StatisticsTab />}
         {selectedTable === "attendee" && <AttendeeTable />}
         {selectedTable === "roomInquiries" && <RoomInquiriesTable />}
         {selectedTable === "cleaning" && <CleaningTable />}

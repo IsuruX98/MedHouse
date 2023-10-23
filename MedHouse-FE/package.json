@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "apexcharts": "^3.44.0",
     "axios": "^1.5.1",
+    "chart.js": "^4.4.0",
     "firebase": "^8.6.8",
     "mongodb": "^5.7.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
     "sweetalert2": "^11.7.32",
     "swiper": "^10.1.0",
     "util.promisify": "^1.1.2"
