@@ -64,7 +64,7 @@ function LeaveRequestTable() {
               <td>{request.contactNo}</td>
               <td className="stats">{request.status}</td>
               <td>
-                {request.status === "Pending" && (
+                {request.status === "pending" && (
                   <>
                     <button
                       className="accept"
