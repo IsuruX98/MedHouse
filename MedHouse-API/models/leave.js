@@ -6,7 +6,7 @@ const leaveSchema = new mongoose.Schema({
     required: true,
   },
   studentID: {
-    type: Number,
+    type: String,
     required: true,
   },
   accommodationBlock: {
@@ -14,7 +14,7 @@ const leaveSchema = new mongoose.Schema({
     required: true,
   },
   roomID: {
-    type: Number,
+    type: String,
     required: true,
   },
   leaveType: {

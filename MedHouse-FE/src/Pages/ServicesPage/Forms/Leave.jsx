@@ -65,7 +65,7 @@ function Leave() {
           />
           <label htmlFor="studentID">Student ID</label>
           <input
-            type="number"
+            type="text"
             name="studentID"
             id="studentID"
             value={formData.studentID}
@@ -85,7 +85,7 @@ function Leave() {
           </select>
           <label htmlFor="roomID">Room ID</label>
           <input
-            type="number"
+            type="text"
             name="roomID"
             id="roomID"
             value={formData.roomID}

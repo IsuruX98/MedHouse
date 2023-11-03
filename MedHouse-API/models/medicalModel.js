@@ -7,7 +7,7 @@ const medicalSchema = new mongoose.Schema(
       required: true,
     },
     studentID: {
-      type: Number,
+      type: String,
       required: true,
     },
     academicYear: {
@@ -15,7 +15,7 @@ const medicalSchema = new mongoose.Schema(
       required: true,
     },
     roomID: {
-      type: Number,
+      type: String,
       required: true,
     },
     age: {

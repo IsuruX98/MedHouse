@@ -116,7 +116,7 @@ function Cleaning() {
         <div>
           <label htmlFor="StudentID">Student ID</label>
           <input
-            type="number"
+            type="text"
             name="studentID"
             id="StudentID"
             onChange={handleChange}

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const roomInquirySchema = new mongoose.Schema(
   {
     studentId: {
-      type: Number,
+      type: String,
       required: true,
     },
     roomId: {

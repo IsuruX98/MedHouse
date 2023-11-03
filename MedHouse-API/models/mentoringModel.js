@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const mentoringSchema = new mongoose.Schema(
   {
     studentID: {
-      type: Number,
+      type: String,
       required: true,
     },
     academicYear: {
@@ -11,7 +11,7 @@ const mentoringSchema = new mongoose.Schema(
       required: true,
     },
     roomID: {
-      type: Number,
+      type: String,
       required: true,
     },
     requestTime: {

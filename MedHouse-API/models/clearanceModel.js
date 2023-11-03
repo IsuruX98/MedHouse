@@ -7,7 +7,7 @@ const clearanceSchema = new mongoose.Schema(
       required: true,
     },
     studentID: {
-      type: Number,
+      type: String,
       required: true,
     },
     studentEmail: {
@@ -15,7 +15,7 @@ const clearanceSchema = new mongoose.Schema(
       required: true,
     },
     roomID: {
-      type: Number,
+      type: String,
       required: true,
     },
     registrationYear: {

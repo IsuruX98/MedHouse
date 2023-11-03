@@ -53,7 +53,7 @@ function Mentoring() {
         <div className="student_detail">
           <label htmlFor="student_id">Student ID</label>
           <input
-            type="number"
+            type="text"
             name="studentID"
             id="student_id"
             onChange={handleInputChange}
@@ -67,7 +67,7 @@ function Mentoring() {
           />
           <label htmlFor="room_id">Room ID</label>
           <input
-            type="number"
+            type="text"
             name="roomID"
             id="room_id"
             onChange={handleInputChange}

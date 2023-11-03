@@ -70,7 +70,7 @@ function Clearance() {
 
         <label htmlFor="studentID">Student ID</label>
         <input
-          type="number"
+          type="text"
           name="studentID"
           id="studentID"
           value={formData.studentID}
@@ -88,7 +88,7 @@ function Clearance() {
 
         <label htmlFor="roomID">Room ID</label>
         <input
-          type="number"
+          type="text"
           name="roomID"
           id="roomID"
           value={formData.roomID}
