@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AttendeeTable.css";
+import Swal from "sweetalert2";
+import emailjs from "emailjs-com";
+emailjs.init("McyT0cwVhQOXgog9F");
 
 function LeaveRequestTable() {
   const [leaveRequests, setLeaveRequests] = useState([]);
+  const [studentEmail, setStudentEmail] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [requestStatus, setRequestStatus] = useState("");
 
   useEffect(() => {
     // Fetch data from the API endpoint
@@ -19,10 +25,16 @@ function LeaveRequestTable() {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      // Update the status of the medical service request in the backend
+      // Update the status of the leave request in the backend
       await axios.patch(`http://localhost:5000/api/leave/${id}/status`, {
         status: newStatus,
       });
+
+      // Set the request status for sending appropriate email message
+      setRequestStatus(newStatus);
+
+      // When accepting or rejecting, open the modal for entering student email
+      setIsModalOpen(true);
 
       // Update the local state with the updated status
       setLeaveRequests((prevRequests) =>
@@ -33,6 +45,55 @@ function LeaveRequestTable() {
     } catch (error) {
       console.error("Error updating status: ", error);
     }
+  };
+
+  const handleEmailSend = () => {
+    let emailSubject = "";
+    let emailDescription = "";
+
+    if (requestStatus === "accepted") {
+      emailSubject = "Leave Request Accepted";
+      emailDescription = "Your leave request has been accepted.";
+    } else if (requestStatus === "rejected") {
+      emailSubject = "Leave Request Rejected";
+      emailDescription = "Your leave request has been rejected.";
+    }
+
+    // Send email with the specific status message
+    sendEmail(studentEmail, emailSubject, emailDescription);
+
+    // Close the modal after sending the email
+    setIsModalOpen(false);
+  };
+
+  const sendEmail = (toEmail, subject, description) => {
+    const emailServiceId = "service_dab7f58"; // Replace with your Email.js service ID
+    const templateId = "template_b5hpmrk"; // Replace with your Email.js template ID
+
+    emailjs
+      .send(emailServiceId, templateId, {
+        to_email: toEmail,
+        subject: subject,
+        description: description,
+      })
+      .then(
+        (response) => {
+          Swal.fire({
+            icon: "success",
+            title: "Email Sent Successfully!",
+            text: `Email sent to ${toEmail}`,
+          });
+          console.log("Email sent successfully:", response);
+        },
+        (error) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Email sending failed. Please try again later.",
+          });
+          console.error("Email sending failed:", error);
+        }
+      );
   };
 
   return (
@@ -89,6 +150,28 @@ function LeaveRequestTable() {
           ))}
         </tbody>
       </table>
+
+      {/* Modal for entering student email */}
+      {isModalOpen && (
+        <div className="modal-container">
+          <h2>Enter Student Email</h2>
+          <br />
+          <input
+            className="modal-input"
+            value={studentEmail}
+            onChange={(e) => setStudentEmail(e.target.value)}
+            placeholder="Enter student email"
+          />
+          <div className="modal-buttons">
+            <button className="send-btn" onClick={handleEmailSend}>
+              Send Email
+            </button>
+            <button className="close-btn" onClick={() => setIsModalOpen(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
