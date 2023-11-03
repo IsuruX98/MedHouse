@@ -62,3 +62,64 @@ button:hover {
   font-weight: bold;
   color: #0075b8;
 }
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  /* Improved focus style */
+  &:focus {
+    border-color: #0075b8;
+    box-shadow: 0 0 5px rgba(0, 117, 184, 0.5);
+  }
+
+  /* Hover effect */
+  &:hover {
+    border-color: #0075b8;
+  }
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button.send-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-buttons button.close-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+.modal-buttons button.send-btn:hover {
+  background-color: rgba(0, 123, 255, 0.8);
+}
