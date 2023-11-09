@@ -11,7 +11,7 @@ Hostel Management System Admin Dashboard is a robust and efficient solution buil
 
 ## Screenshots
 
-![Screenshot (30)](https://github.com/IsuruX98/MedHouse/assets/104721314/a0b62385-4664-4671-8a00-049f5dbbda4e)
+![Screenshot (29)](https://github.com/IsuruX98/MedHouse/assets/104721314/563d038c-f2d5-46e3-85b6-4418f85264d8)
 
 ![Screenshot (28)](https://github.com/IsuruX98/MedHouse/assets/104721314/bdfaba39-5f7f-4c92-b8b3-724f8b5f4da8)
 
